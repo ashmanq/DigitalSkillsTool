@@ -1,29 +1,6 @@
-{% extends "layout.html" %}
-
-{% block headIcons %}
-<link rel="shortcut icon" href="{{ asset_path }}images/PA/favicon.ico?0.18.3" type="image/x-icon" />
-{% endblock %}
-
-{% block head %}
-<!--[if lte IE 8]><link href="/public/stylesheets/unbranded-ie8.css" rel="stylesheet" type="text/css" /><![endif]-->
-<!--[if gt IE 8]><!--><link href="/public/stylesheets/other.css" media="all" rel="stylesheet" type="text/css" /><!--<![endif]-->
-
-{% for stylesheetUrl in extensionConfig.stylesheets %}
-<link href="{{ stylesheetUrl }}" rel="stylesheet" type="text/css" />
-{% endfor %}
-{% endblock %}
-
-
-{% block header %}
 {% include "../../../includes/pa-header.html"  %}
-{% endblock %}
-
-  {% block pageTitle %}
-  Patient Access - Register
-  {% endblock %}
-
-
-  {% block content %}
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper">
   <div class="govuk-grid-row pa-block pa-grey-container" style="text-align: center;">
     <div class="govuk-grid-column-full">
     <h1>Create your Patient Access account</h1>
@@ -33,10 +10,11 @@
         <div class="govuk-grid-column-one-quarter">
           &nbsp;
         </div>
-
         <div class="govuk-grid-column-one-half">
           <div class="pa-white-container ">
             <h2>Enter your personal details</h2>
+            <form class="form" method="post">
+
             <div class="govuk-form-group">
               <label class="govuk-label" for="pa-first-name">
                 First name
@@ -61,39 +39,51 @@
                 <label class="govuk-label" for="pa-date-of-birth">
                   Date of birth
                 </label>
-                <div class="govuk-date-input" id="pa-date-of-birthd-day">
-                  <div class="govuk-date-input__item" style="margin-right: 10px">
+                <div class="govuk-date-input" id="pa-date-of-birth-day">
+                  <div class="govuk-date-input__item" style="margin-right: 3px">
                     <div class="govuk-form-group">
-                      <input class="govuk-input" id="pa-date-of-birthd-day" name="pa-date-of-birthd-day" type="text" pattern="[0-9]*" inputmode="numeric" Placeholder="Day" style="width:50px;" style="margin-right: 10px">
+                      <input class="govuk-input" id="pa-date-of-birth-day" name="pa-date-of-birth-day" type="text" pattern="[0-9]*" inputmode="numeric" Placeholder="Day" style="width:50px;" style="margin-right: 10px">
                     </div>
                   </div>
-                  <select class="govuk-select" id="pa-DOBmonth" name="pa-DOBmonth" style="margin-right: 10px">
-                    <option value="-1" selected="selected">Month</option>
-                    <option value="1">January</option>
-                    <option value="2">February</option>
-                    <option value="3">March</option>
-                    <option value="4">April</option>
-                    <option value="5">May</option>
-                    <option value="6">June</option>
-                    <option value="7">July</option>
-                    <option value="8">August</option>
-                    <option value="9">September</option>
+                  <select class="govuk-select" id="pa-DOBmonth" name="pa-DOBmonth" style="margin-right: 3px">
+                    <option value="" selected="selected">Month</option>
+                    <option value="01">January</option>
+                    <option value="02">February</option>
+                    <option value="03">March</option>
+                    <option value="04">April</option>
+                    <option value="05">May</option>
+                    <option value="06">June</option>
+                    <option value="07">July</option>
+                    <option value="08">August</option>
+                    <option value="09">September</option>
                     <option value="10">October</option>
                     <option value="11">November</option>
                     <option value="12">December</option>
                   </select>
-                  <div class="govuk-date-input__item" style="margin-right: 10px">
+                  <div class="govuk-date-input__item" style="margin-right: 3px">
                     <div class="govuk-form-group">
-                      <input class="govuk-input govuk-input--width-4" id="pa-date-of-birthd-year" name="pa-date-of-birthd-year" type="text" pattern="[0-9]*" inputmode="numeric" placeholder="Year">
+                      <input class="govuk-input govuk-input--width-4" id="pa-date-of-birth-year" name="pa-date-of-birth-year" type="text" pattern="[0-9]*" inputmode="numeric" placeholder="Year">
                     </div>
                   </div>
                 </div>
               </fieldset>
             </div>
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="pa-gender">
+                Gender (optional)
+              </label>
+              <select class="govuk-select" id="pa-gender" name="pa-gender">
+                <option value="" selected="selected">Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Not Specified">Not Specified</option>
+              </select>
+              </div>
             <p><a href="./pa-why-we-ask.html">Why do we ask for this information</a></p>
-            <a href="./pa-register2" role="button" draggable="false" class="govuk-button button-primary pa-pink-button" data-module="govuk-button" style="width:100%; margin-bottom: 30px;">
+            <button class="govuk-button button-primary pa-pink-button" data-module="govuk-button" style="width:100%; margin-bottom: 30px;">
               Continue
-            </a>
+            </button>  
+            </form>
           </div>
         </div>
 
@@ -101,11 +91,9 @@
     </div>
   </div>
   <div class="student-notes-box"> 
-    <p>You can enter anything at the moment, we are not checking</p>
+    <p>You can enter anything at the moment, we are not checking for errors</p>
   </div>
+</main>
+</div>
 
-  {% endblock %}
-
-  {% block footer %}
-  {% include "../../../includes/generic-footer.html"  %}
-  {% endblock %}
+  {% include "../../../includes/pa-footer.html"  %}

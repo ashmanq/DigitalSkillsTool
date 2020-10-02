@@ -11,7 +11,7 @@
     <div class="govuk-grid-column-full">
 
       <h1 class="govuk-heading-xl heading-title">Creating this website</h1>
-      <a class=" button-secondary govuk-button" href="/">Back to the forms menu</a>
+      <a class=" button-secondary govuk-button" href="/">Go to the forms menu</a>
       <p>
         We are using the <a href="https://govuk-prototype-kit.herokuapp.com/docs" target="_blank" rel="noopener"><strong>GOV.UK Prototype Kit</strong></a>
         <span class="govuk-caption-s">{{releaseVersion}}</span>
@@ -44,6 +44,7 @@
                   GOV.UK Design System
                 </a>
               </li>
+              <li><a href="https://prototype-kit-training.cloudapps.digital/#introduction" target="_blank" rel="noopener">GOVUK Prototype training</a></li>
             </ul>
           </div>
         </div>
@@ -56,7 +57,7 @@
             </h2>
           </div>
           <div id="accordion-default-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-1">
-            <p>Different forms are needed to support the classes. Some are Council forms, some are GOVUK forms or cottish Government forms and some are from private services like energy providers.</p>
+            <p>Different forms are needed to support the classes. Some are Council forms, some are GOVUK forms or Scottish Government forms and some are from private services like energy providers.</p>
             <p>Different layouts have been created for each and even among each category, there is a variety of layouts:<br>
                For example, the DVLA have a different layout and style compared to HMRC. Social Security Scotland also has its own style.</p>
           </div>
@@ -131,32 +132,54 @@
           <div id="accordion-default-content-4" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-4">
             <h3 class="govuk-heading-m">Validating username and password - error messages</h3>
             <p><code>in app>views>forms>govuk-forms>universal-credit>UCcreateAccount.html</code></p>
-            <p><a href="/forms/govuk-forms/universal-credit/UCcreateAccount">See the html page file</a> and also check the route.js file</p>
+            <p><a href="/forms/govuk-forms/universal-credit/UCcreateAccount">See the html page file</a> and also check the route.js file.</p>
+
+            <h3 class="govuk-heading-m">Other examples of validation - error messages</h3>
+            <p><code>in app>views>forms>govuk-forms>learn-to-drive>apply-provisional-licence>APLdetails.html</code></p>
+            <p><a href="/forms/govuk-forms/learn-to-drive/apply-provisional-licence/APLdetails">See the html page file</a> and also check the route.js file.</p>
+            <p>Also in <code>in app>views>forms>erc-forms>report-repair>RRonlineAboutYou.html</code></p>
+            <p><a href="/forms/erc-forms/report-repair/RRonlineAboutYou">See the html page file</a> and other places.</p>
 
             <h3 class="govuk-heading-m">Display an email address back on a confirmation page</h3>
             <p><code>in app>views>forms>erc-forms>council-tax-online>register-for-council-tax>RCTemailaddress.html</code></p>
-            <p><a href="/forms/erc-forms/council-tax-online/register-for-council-tax/RCTemailaddress">See the html page file</a> where we capture the email address, it's displayed on the next one once you select: 'Send code'</p>
+            <p><a href="/forms/erc-forms/council-tax-online/register-for-council-tax/RCTemailaddress">See the html page file</a> where we capture the email address, it's displayed on the next one once you select: 'Send code'.</p>
             <p>Also in <code>in app>views>forms>other-forms>bulb>bulb-link-sent.html</code></p>
-            <p><a href="/forms/other-forms/bulb/bulb-link-sent">See the html page file</a> where we capture the email address</p>
+            <p><a href="/forms/other-forms/bulb/bulb-link-sent">See the html page file</a> where we capture the email address.</p>
             
+            <h3 class="govuk-heading-m">Persistance of data</h3>
+            <p>Used to save the value previously entered when a user comes back to the page.</p>
+            <p><code>in app>views>forms>sss-forms>best-start>BS-contact-details.html</code></p>
+            <p>This is saving the value of radio buttons. You can do the same for checkboxes in Nunjucks.</p>
+            <p><a href="/forms/sss-forms/best-start/BS-contact-details">See the html page file</a>.</p>
+            <p><code>in app>views>forms>sss-forms>best-start>BS-payment-account.html</code></p>
+            <p>This is saving the value of input fields.</p>
+            <p><a href="/forms/sss-forms/best-start/BS-payment-account">See the html page file</a>.</p>
+            <p><code>in app>views>forms>govuk-forms>universal-credit>UCcreateAccount.html</code></p>
+            <p>This is saving the value of a dropdown / select.</p>
+            <p><a href="/forms/govuk-forms/universal-credit/UCcreateAccount">See the html page file</a>.</p>
 
             <h3 class="govuk-heading-m">Re-use data entered by the user and display it in a summary page</h3>
-            <p><code>in app>views>forms>govuk-forms>learn-to-drive>book-theory-test>BTT6my-booking.html</code></p>
-            <p><a href="/forms/govuk-forms/learn-to-drive/book-theory-test/BTT6my-booking">See the html page file</a></p>
+            <p><code>in app>views>forms>govuk-forms>register-to-vote>RTVsummary.html</code></p>
+            <p><a href="/forms/govuk-forms/register-to-vote/RTVsummary">See the html page file</a>.</p>
 
             <h3 class="govuk-heading-m">Radio buttons with a conditional revealing more components</h3>
             <p><code>in app>views>forms>govuk-forms>learn-to-drive>book-theory-test>BTT2support.html</code></p>
-            <p><a href="/forms/govuk-forms/learn-to-drive/book-theory-test/BTT2support">See the html page file</a></p>
+            <p><a href="/forms/govuk-forms/learn-to-drive/book-theory-test/BTT2support">See the html page file</a>.</p>
 
             <h3 class="govuk-heading-m">Single checkbox with validation for 'I have read ...'</h3>
             <p><code>in app>views>forms>erc-forms>council-tax-online>register-for-council-tax>RCTstart.html</code></p>
-            <p><a href="/forms/erc-forms/council-tax-online/register-for-council-tax/RCTstart">See the html page file</a> but check the <code>route.js</code> file for it too, or check</p>
+            <p><a href="/forms/erc-forms/council-tax-online/register-for-council-tax/RCTstart">See the html page file</a> but check the <code>route.js</code> file for it too, or check.</p>
             <p><code>in app>views>forms>govuk-forms>universal-credit>UCalreadyGetBenefit.html</code></p>
-            <p><a href="/forms/govuk-forms/universal-credit/UCalreadyGetBenefit">See the html page file</a> but check the <code>route.js</code> file for it too</p>
+            <p><a href="/forms/govuk-forms/universal-credit/UCalreadyGetBenefit">See the html page file</a> but check the <code>route.js</code> file for it too.</p>
 
             <h3 class="govuk-heading-m">Tooltip display on hover</h3>
             <p><code>in app>views>forms>erc-forms>free-school-meals>FSMbankDetails.html</code></p>
-            <p><a href="/forms/erc-forms/free-school-meals/FSMbankDetails">See the html page file</a> check the sortcode and the bank account</p>
+            <p><a href="/forms/erc-forms/free-school-meals/FSMbankDetails">See the html page file</a> check the sortcode and the bank account.</p>
+
+            <h3 class="govuk-heading-m">Includes: template a piece of code to re-use it</h3>
+            <p><code>in app>views>forms>other-forms>bulb>bulb-dashboard.html</code></p>
+            <p><a href="/forms/other-forms/bulb/bulb-dashboard">See the html page file</a> for the header and the footer.</p>    
+            <p>The group of code is in <code>in app>views>includes></code></p>     
 
           </div>
         </div>
@@ -172,7 +195,7 @@
             <h3 class="govuk-heading-m">Modify the 'Clear prototype data' pages</h3>
             <p>This is a function you can find in every footer. You can change the two pages by going in:</p>
             <p><code>lib>prototype-admin>clear-data.html</code></p>
-            <p><a href="/prototype-admin/clear-data">See the html page file</a> also check the <code>server.js</code> file, lines 208 to 212 to understand how it works</p>
+            <p><a href="/prototype-admin/clear-data">See the html page file</a> also check the <code>server.js</code> file, lines 208 to 212 to understand how it works.</p>
 
             <h3 class="govuk-heading-m">Easy update of dates or other variables</h3>
             <p><code>Server.js </code>at the route of the code.</p>

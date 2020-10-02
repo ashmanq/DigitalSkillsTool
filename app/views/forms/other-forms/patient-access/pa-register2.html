@@ -1,29 +1,6 @@
-{% extends "layout.html" %}
-
-{% block headIcons %}
-<link rel="shortcut icon" href="{{ asset_path }}images/PA/favicon.ico?0.18.3" type="image/x-icon" />
-{% endblock %}
-
-{% block head %}
-<!--[if lte IE 8]><link href="/public/stylesheets/unbranded-ie8.css" rel="stylesheet" type="text/css" /><![endif]-->
-<!--[if gt IE 8]><!--><link href="/public/stylesheets/other.css" media="all" rel="stylesheet" type="text/css" /><!--<![endif]-->
-
-{% for stylesheetUrl in extensionConfig.stylesheets %}
-<link href="{{ stylesheetUrl }}" rel="stylesheet" type="text/css" />
-{% endfor %}
-{% endblock %}
-
-
-{% block header %}
 {% include "../../../includes/pa-header.html"  %}
-{% endblock %}
-
-  {% block pageTitle %}
-  Patient Access - Register
-  {% endblock %}
-
-
-  {% block content %}
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper">
   <div class="govuk-grid-row pa-block pa-grey-container" style="text-align: center;">
     <div class="govuk-grid-column-full">
     <h1>Create your Patient Access account</h1>
@@ -38,6 +15,7 @@
           <div class="pa-white-container ">
             <p><a href="./pa-register.html">&lt; Back </a></p>
             <h2> Enter account details</h2>
+            <form class="form" method="post">
             <div class="govuk-form-group">
               <label class="govuk-label" for="pa-email">
                 Email address *
@@ -83,10 +61,10 @@
                 </div>
               </fieldset>
             </div>
-
-            <a href="./pa-success" role="button" draggable="false" class="govuk-button button-primary pa-pink-button" data-module="govuk-button" style="width:100%; margin-bottom: 30px;">
+            <button class="govuk-button button-primary pa-pink-button" data-module="govuk-button" style="width:100%; margin-bottom: 30px;">
               Create account
-            </a>
+            </button>  
+            </form>
           </div>
         </div>
 
@@ -94,12 +72,9 @@
     </div>
   </div>
   <div class="student-notes-box"> 
-    <p>You can enter anything at the moment, we are not checking</p>
+    <p>You can enter anything at the moment, we are not checking for errors</p>
   </div>
+</main>
+</div>
 
-
-    {% endblock %}
-
-    {% block footer %}
-    {% include "../../../includes/generic-footer.html"  %}
-    {% endblock %}
+    {% include "../../../includes/pa-footer.html"  %}

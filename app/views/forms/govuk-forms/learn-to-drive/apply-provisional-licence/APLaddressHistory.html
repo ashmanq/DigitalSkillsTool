@@ -31,7 +31,7 @@ Motoring
 
 {% block content %}
 <div class="govuk-grid-row govuk-!-margin-bottom-9">
-    <span class="apply-DVLA-tagline">This is a training website</span>
+    <a href="/index.html" style="text-decoration: none;"><span class="apply-DVLA-tagline">This is a training website</span></a>
 </div>
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-one-quarter">
@@ -86,11 +86,11 @@ Motoring
             {% else %}
               {{data['APL-address-no-months']}} month(s)
             {% endif %}</p>
-          <p><a href="/forms/govuk-forms/learn-to-drive/apply-provisional-licence/APLaddressSearch.html" class="red-dvla-link">Change address 1</a></p>
+          <p><a href="APLaddressSearch.html" class="red-dvla-link">Change address 1</a></p>
 
           <h5 class="govuk-heading-s grey-heading">Address 2</h5>
           <p></p>
-          <p><em>Your last address</em><br>90 Mountcastle Wynd,<br>KILWINNING<br>KA13 6DH</p>
+          <p><em>Your last address</em><br>45 test Street,<br>{{town}}<br>{{postcode}}</p>
           <p style="margin-bottom:0"><b><em>How long did you live there?</em></b></p>
           <p>3 year(s) 9 month(s)</p>
           <p><a href="#" class="red-dvla-link link-disabled">Change address 2</a></p>
@@ -100,11 +100,15 @@ Motoring
         <hr>
 
         <div class="dvla-button-row">
-          <a class="govuk-button button-primary dvla-previous-button" href="/forms/govuk-forms/learn-to-drive/apply-provisional-licence/APLaddressYearsLived.html">Previous</a>
-          <a class="govuk-button button-primary dvla-cancel-button" href="/forms/govuk-forms/learn-to-drive/apply-provisional-licence/cancel-DVLA-apply-form.html">Cancel</a>
-          <a class="govuk-button button-primary dvla-custom-next-button" href="/forms/govuk-forms/learn-to-drive/apply-provisional-licence/APLsecurityDetails.html">Next</a>
+          <a class="govuk-button button-primary dvla-previous-button" href="APLaddressYearsLived.html">Previous</a>
+          <a class="govuk-button button-primary dvla-cancel-button" href="cancel-DVLA-apply-form.html">Cancel</a>
+          <a class="govuk-button button-primary dvla-custom-next-button" href="APLsecurityDetails.html">Next</a>
         </div>
     </div>
+</div>
+<div class="student-notes-box"> 
+  <p>The information on this page is just to show you how it could look like.</p>
+  <p>On the real form you would see your real address history, as you would have enter it on the previous pages.</p>
 </div>
 {% endblock %}
 

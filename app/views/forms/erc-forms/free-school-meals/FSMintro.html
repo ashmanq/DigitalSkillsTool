@@ -1,24 +1,5 @@
-{% extends "layout_tool.html" %}
+{% extends "layout_erc.html" %}
 
-{% block header %}
-<div class="govuk-header__container govuk-width-container erc-old">
-    <div class="govuk-header__logo">
-        <span class="govuk-header__logotype">
-            <a href="/index.html" id="logo-erc"><image src="{{ asset_path }}/images/ERC/erclogo.png" alt="Homepage" width="188" height="90"></image></a>
-        </span>
-    </div>
-    <div class="govuk-header__content">
-        <a href="/index.html">
-          <span class="erc-tagline-old">
-            This is a training website
-          </span>
-        </a>
-        <h1  class="govuk-heading-l do-it-online">
-          Do it online
-        </h1>
-    </div>
-</div>
-{% endblock %}
 
 {% block pageTitle %}
   About this form
@@ -30,14 +11,16 @@
     <h1 class="govuk-heading-xl">
         About this form
     </h1>
-    <a class=" button-secondary govuk-button" href="/">Back to the forms menu</a>
+    <a class=" button-secondary govuk-button" href="/">Go to the forms menu</a>
 
 <h2 class="govuk-heading-m">
   Please note:
 </h2>
 <ul class="govuk-list govuk-list--bullet">
-  <li>we can't show you what happen after you apply, but all the screens up to this part are like the real form</li>
-  <li>we only check you answers and give you error messages on the screens which are important to see if you are eligible or not for one of the grant or both grants</li>
+  <li>This is not the real form, you are only practicing on something that looks like the real form</li>
+  <li style="color: #B30000; font-weight: 500;">The data you will enter is not sent to any system - there is no back end database</li>
+  <li>We can't show you what happen after you apply</li>
+  <li>We only check you answers and give you error messages on the screens which are important to see if you are eligible for one of the grant or both grants</li>
 </ul>
 
 <h2 class="govuk-heading-s">
@@ -46,7 +29,7 @@
   {{ govukButton({
     text: "Start the form",
     classes: "button-primary button-info",
-    href: "/forms/erc-forms/free-school-meals/FSMstart"
+    href: "FSMstart"
   }) }}
 </div>
 <div class="student-notes-box">

@@ -52,7 +52,7 @@ $sss-text: #333;
 
 .govuk-header__content {
     @media only screen and (min-width: 999px) {
-    border: 30px solid #fff;
+    border: 30px solid  #0000;
     }
     a {
         text-decoration: none;
@@ -224,8 +224,12 @@ body, p, li, ul, h1, h2, h3 {
     font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight:700;
     text-decoration: none;
+    margin-right: 40px; // prevent the text of the button to go under the chevron picture
 }
 
+.govuk-accordion__section-heading.sg{
+    padding: 10px 0px
+}
 .govuk-accordion__section-button.sg:hover, .govuk-accordion__section-button.sg:hover:not(:focus){
    color: #00437e;
    text-decoration: none;

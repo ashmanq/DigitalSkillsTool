@@ -10,14 +10,76 @@ module.exports = router
 
 // Register to Vote ****************************************************************************
 router.post('/forms/govuk-forms/register-to-vote/RTVCountryOfResidence', function (req, res) {
-  var wheredoyouliveSelected = req.session.data['where-do-you-live']
-  if (wheredoyouliveSelected  === 'england','scotland','wales', 'northern-ireland') {
-      return res.redirect('/forms/govuk-forms/register-to-vote/RTVNationality')
-  }
-  if (wheredoyouliveSelected  === 'abroad-england','abroad-scotland','abroad-wales', 'abroad-northern-ireland') {
-    return res.redirect('/forms/govuk-forms/register-to-vote/RTVDateOfBirth')
-}
+res.redirect('/forms/govuk-forms/register-to-vote/RTVNationality')
+})
+
+router.post('/forms/govuk-forms/register-to-vote/RTVNationality', function (req, res) {
   res.redirect('/forms/govuk-forms/register-to-vote/RTVDateOfBirth')
+})
+
+router.post('/forms/govuk-forms/register-to-vote/RTVDateOfBirth', function (req, res) {
+  res.redirect('/forms/govuk-forms/register-to-vote/RTVName')
+})
+
+router.post('/forms/govuk-forms/register-to-vote/RTVName', function (req, res) {
+  res.redirect('/forms/govuk-forms/register-to-vote/RTVNInumber')
+})
+
+router.post('/forms/govuk-forms/register-to-vote/RTVNInumber', function (req, res) {
+  res.redirect('/forms/govuk-forms/register-to-vote/RTVaddress')
+})
+router.post('/forms/govuk-forms/register-to-vote/RTVaddress', function (req, res) {
+  res.redirect('/forms/govuk-forms/register-to-vote/RTVaddressNext')
+})
+
+router.post('/forms/govuk-forms/register-to-vote/RTVaddressNext', function (req, res) {
+  res.redirect('/forms/govuk-forms/register-to-vote/RTVaddress2nd')
+})
+
+router.post('/forms/govuk-forms/register-to-vote/RTVaddressFull', function (req, res) {
+  res.redirect('/forms/govuk-forms/register-to-vote/RTVaddress2nd')
+})
+
+router.post('/forms/govuk-forms/register-to-vote/RTVaddress2nd', function (req, res) {
+  res.redirect('/forms/govuk-forms/register-to-vote/RTVmoved')
+})
+
+router.post('/forms/govuk-forms/register-to-vote/RTVmoved', function (req, res) {
+  var moved = req.session.data['rtv-moved']
+  var hadUKadd = req.session.data['registered-abroad']
+  
+  if (moved === "Yes, from a UK address") {
+return res.redirect('/forms/govuk-forms/register-to-vote/RTVpreviousUKadd')
+  } else {
+    if ((moved === "Yes, from abroad" ) && (hadUKadd ==="Yes")) {
+      res.redirect('/forms/govuk-forms/register-to-vote/RTVpreviousUKpostcode')
+    }
+  }
+  res.redirect('/forms/govuk-forms/register-to-vote/RTVoptOut')
+})
+
+router.post('/forms/govuk-forms/register-to-vote/RTVpreviousUKpostcode', function (req, res) {
+  res.redirect('/forms/govuk-forms/register-to-vote/RTVpreviousUKaddNext')
+})
+
+router.post('/forms/govuk-forms/register-to-vote/RTVpreviousUKadd', function (req, res) {
+  res.redirect('/forms/govuk-forms/register-to-vote/RTVpreviousUKaddNext')
+})
+
+router.post('/forms/govuk-forms/register-to-vote/RTVpreviousUKaddNext', function (req, res) {
+  res.redirect('/forms/govuk-forms/register-to-vote/RTVoptOut')
+})
+
+router.post('/forms/govuk-forms/register-to-vote/RTVoptOut', function (req, res) {
+  res.redirect('/forms/govuk-forms/register-to-vote/RTVpostalVote')
+})
+
+router.post('/forms/govuk-forms/register-to-vote/RTVpostalVote', function (req, res) {
+  res.redirect('/forms/govuk-forms/register-to-vote/RTVcontact')
+})
+
+router.post('/forms/govuk-forms/register-to-vote/RTVcontact', function (req, res) {
+  res.redirect('/forms/govuk-forms/register-to-vote/RTVsummary')
 })
 
 // Apply for a provisional licence ***************************************************
@@ -329,8 +391,6 @@ router.post('/forms/govuk-forms/learn-to-drive/apply-provisional-licence/APLdecl
   res.redirect('/forms/govuk-forms/learn-to-drive/apply-provisional-licence/APLfinish')
 })
 
-
-
 // book a theory test - if other support is needed and selected, then we stop and don't do the rest of the form - we show a Thank you screen.
 
 router.post('/forms/govuk-forms/learn-to-drive/book-theory-test/BTT2support', function (req, res) {
@@ -346,6 +406,34 @@ router.get('forms/govuk-forms/learn-to-drive/book-theory-test/BTT2support', func
   return res.render('forms/govuk-forms/learn-to-drive/book-theory-test/BTT2support')
 })
 
+// Book Driving test **************************************************************************
+
+router.post('/forms/govuk-forms/learn-to-drive/book-driving-test/BDTsector', function (req, res) {
+  var sector = req.session.data['sector'] 
+  if (sector === 'other') {
+    return res.redirect('/forms/govuk-forms/learn-to-drive/book-driving-test/BDTsorry')
+  } else {
+    return res.redirect('/forms/govuk-forms/learn-to-drive/book-driving-test/BDTreason')
+  }
+})
+
+router.post('/forms/govuk-forms/learn-to-drive/book-driving-test/BDTreason', function (req, res) {
+  var reason = req.session.data['reason'] 
+  if (reason === 'other') {
+    return res.redirect('/forms/govuk-forms/learn-to-drive/book-driving-test/BDTreason-text')
+  } else {
+    return res.redirect('/forms/govuk-forms/learn-to-drive/book-driving-test/BDTjob')
+  }
+})
+
+router.post('/forms/govuk-forms/learn-to-drive/book-driving-test/BDTtestbooked', function (req, res) {
+  var isCancelled = req.session.data['test-cancelled'] 
+  if (isCancelled === 'yes') {
+    return res.redirect('/forms/govuk-forms/learn-to-drive/book-driving-test/BDTcancelNumber')
+  } else {
+    return res.redirect('/forms/govuk-forms/learn-to-drive/book-driving-test/BDTtheoryNumber')
+  }
+})
 
 // Universal Credit ***************************************************************************
 
@@ -606,6 +694,19 @@ router.post('/forms/govuk-forms/universal-credit-apply/UCAincome', function (req
   res.redirect('/forms/govuk-forms/universal-credit-apply/UCAtoDoList')
 })
 
+router.post('/forms/govuk-forms/universal-credit-apply/UCAwork', function (req, res) {
+var UCAworking = req.session.data['work-check']
+if (UCAworking === 'no'){
+  req.session.data['work-done'] = true
+  req.session.data['1st-display'] = false
+  req.session.data['green-to-display'] = "work"
+  res.redirect('/forms/govuk-forms/universal-credit-apply/UCAtoDoList')
+}
+else {
+  res.redirect('/forms/govuk-forms/universal-credit-apply/UCAworkStatus')
+}
+})
+
 router.post('/forms/govuk-forms/universal-credit-apply/UCAworkEarnings', function (req, res) {
   req.session.data['work-done'] = true
   req.session.data['1st-display'] = false
@@ -620,6 +721,15 @@ router.post('/forms/govuk-forms/universal-credit-apply/UCAhealthSupport', functi
   res.redirect('/forms/govuk-forms/universal-credit-apply/UCAtoDoList')
 })
 
+router.post('/forms/govuk-forms/universal-credit-apply/UCAhealthConditions', function (req, res) {
+  var UCAHasHealthConditions = req.session.data['has-conditions']
+  if (UCAHasHealthConditions === 'no'){
+    res.redirect('/forms/govuk-forms/universal-credit-apply/UCAhealthPregnancy')
+  }
+  else {
+    res.redirect('/forms/govuk-forms/universal-credit-apply/UCAhealthWhatConditions')
+  }
+  })
 
 // Report a repair ******************************************************************************
 
@@ -654,7 +764,7 @@ router.post('/forms/erc-forms/report-repair/RRonlineRepairDetails', function (re
 
 router.post('/forms/erc-forms/council-tax-online/register-for-council-tax/RCTstart', function (req, res) {
   var hasRead = req.session.data['rctread']
-  if (hasRead == "read") {
+  if (hasRead && hasRead.includes('read')) {
     return res.redirect('/forms/erc-forms/council-tax-online/register-for-council-tax/RCTemailaddress')
   }
   req.session.data['rctread'] = 'error'
@@ -669,6 +779,22 @@ router.post('/forms/erc-forms/council-tax-online/register-for-council-tax/RCTema
   } else {
     res.redirect('/forms/erc-forms/council-tax-online/register-for-council-tax/RCTemailaddress')
   }
+})
+
+router.post('/forms/erc-forms/council-tax-online/register-for-council-tax/RCTnameAddress', function (req, res) {
+  res.redirect('/forms/erc-forms/council-tax-online/register-for-council-tax/RCTaddressSelection')
+})
+
+router.post('/forms/erc-forms/council-tax-online/register-for-council-tax/RCTaddressSelection', function (req, res) {
+  res.redirect('/forms/erc-forms/council-tax-online/register-for-council-tax/RCTsecurityDetails')
+})
+
+router.post('/forms/erc-forms/council-tax-online/register-for-council-tax/RCTsecurityDetails', function (req, res) {
+  res.redirect('/forms/erc-forms/council-tax-online/register-for-council-tax/RCTpasswordCreation')
+})
+
+router.post('/forms/erc-forms/council-tax-online/register-for-council-tax/RCTpasswordCreation', function (req, res) {
+  res.redirect('/forms/erc-forms/council-tax-online/register-for-council-tax/RCTprofileConfirmation')
 })
 
 // Council tax form - sign up *****************************************************************
@@ -943,6 +1069,14 @@ router.post('/forms/erc-forms/free-school-meals/FSMcouncilTaxReduction', functio
 })
 
 // Bulb *****************************************************************
+
+router.post('/forms/other-forms/bulb/bulb-intro', function (req, res) {
+  var name = req.session.data['bulb-name']
+  if (name === '') {
+    res.redirect('/forms/other-forms/bulb/bulb-intro')
+  }
+  res.redirect('/forms/other-forms/bulb/bulb-signin')
+})
 
 router.post('/forms/other-forms/bulb/bulb-signin', function (req, res) {
   var email = req.session.data['bulb-email']
@@ -1220,11 +1354,41 @@ router.post('/forms/erc-forms/housing/CBLextra-reason-medical', function (req, r
 })
 // --------------------------------------- Patient access routes ------------------------------//
 
+router.post('/forms/other-forms/patient-access/pa-intro', function (req, res) {
+  var name = req.session.data['pa-account-name']
+  if (name === '') {
+    res.redirect('/forms/other-forms/patient-access/pa-intro')
+  }
+  res.redirect('/forms/other-forms/patient-access/pa-homepage')
+})
+
+router.post('/forms/other-forms/patient-access/pa-register', function (req, res) {
+  res.redirect('/forms/other-forms/patient-access/pa-register2')
+})
+
 router.post('/forms/other-forms/patient-access/pa-register2', function (req, res) {
-  var email = req.session.data['pa-email']
   res.redirect('/forms/other-forms/patient-access/pa-success')
 })
 
+router.post('/forms/other-forms/patient-access/pa-update-details', function (req, res) {
+  res.redirect('/forms/other-forms/patient-access/pa-my-account')
+})
+
+router.post('/forms/other-forms/patient-access/pa-change-pwd', function (req, res) {
+  res.redirect('/forms/other-forms/patient-access/pa-my-account')
+})
+
+router.post('/forms/other-forms/patient-access/pa-change-details', function (req, res) {
+  res.redirect('/forms/other-forms/patient-access/pa-contact-details')
+})
+
+router.post('/forms/other-forms/patient-access/pa-reset-password', function (req, res) {
+  res.redirect('/forms/other-forms/patient-access/pa-link-sent')
+})
+
+router.post('/forms/other-forms/patient-access/pa-signin', function (req, res) {
+  res.redirect('/forms/other-forms/patient-access/pa-dashboard')
+})
 
 // ---------------------------------------- Best Start Grant routes ---------------------------//
 router.post('/forms/sss-forms/best-start/BS-location', function (req, res) {
@@ -1349,4 +1513,59 @@ router.post('/forms/sss-forms/best-start/BS-payment-account', function (req, res
 
 router.post('/forms/sss-forms/best-start/BS-anything-else', function (req, res) {
   res.redirect('/forms/sss-forms/best-start/BS-check-answers')
+})
+
+// ---------------------------------------- Job application routes ---------------------------//
+
+router.post('/forms/other-forms/job/job-personal-details', function (req, res) {
+  res.redirect('/forms/other-forms/job/job-contact')
+})
+
+router.post('/forms/other-forms/job/job-contact', function (req, res) {
+  res.redirect('/forms/other-forms/job/job-work-rights')
+})
+
+router.post('/forms/other-forms/job/job-work-rights', function (req, res) {
+  res.redirect('/forms/other-forms/job/job-partB')
+})
+
+router.post('/forms/other-forms/job/job-declaration', function (req, res) {
+  var agreed = req.session.data['job-read']
+  if (agreed && agreed.includes('Yes')) {
+    return res.redirect('/forms/other-forms/job/job-partC')
+  }
+  req.session.data['job-read'] = 'error'
+  res.redirect('/forms/other-forms/job/job-declaration')
+})
+
+router.post('/forms/other-forms/job/job-qualifications', function (req, res) {
+  res.redirect('/forms/other-forms/job/job-membership')
+})
+
+router.post('/forms/other-forms/job/job-membership', function (req, res) {
+  res.redirect('/forms/other-forms/job/job-post')
+})
+
+router.post('/forms/other-forms/job/job-post', function (req, res) {
+  res.redirect('/forms/other-forms/job/job-history')
+})
+
+router.post('/forms/other-forms/job/job-history', function (req, res) {
+  res.redirect('/forms/other-forms/job/job-referees')
+})
+
+router.post('/forms/other-forms/job/job-referees', function (req, res) {
+  res.redirect('/forms/other-forms/job/job-disability')
+})
+
+router.post('/forms/other-forms/job/job-disability', function (req, res) {
+  res.redirect('/forms/other-forms/job/job-driving')
+})
+
+router.post('/forms/other-forms/job/job-driving', function (req, res) {
+  res.redirect('/forms/other-forms/job/job-statement')
+})
+
+router.post('/forms/other-forms/job/job-statement', function (req, res) {
+  res.redirect('/forms/other-forms/job/job-partD')
 })

@@ -1,27 +1,6 @@
-{% extends "layout.html" %}
-
-{% block headIcons %}
-  <link rel="shortcut icon" href="{{ asset_path }}images/PA/favicon.ico?0.18.3" type="image/x-icon" />
-{% endblock %}
-
-{% block head %}
-  <!--[if lte IE 8]><link href="/public/stylesheets/unbranded-ie8.css" rel="stylesheet" type="text/css" /><![endif]-->
-  <!--[if gt IE 8]><!--><link href="/public/stylesheets/other.css" media="all" rel="stylesheet" type="text/css" /><!--<![endif]-->
-
-  {% for stylesheetUrl in extensionConfig.stylesheets %}
-    <link href="{{ stylesheetUrl }}" rel="stylesheet" type="text/css" />
-  {% endfor %}
-{% endblock %}
-
-{% block header %}
 {% include "../../../includes/pa-header.html"  %}
-{% endblock %}
-
-  {% block pageTitle %}
-  Log in to Patient Access
-  {% endblock %}
-
-  {% block content %}
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper">
 
   <div class="govuk-grid-row pa-block pa-grey-container">
     <div class="govuk-grid-column-full">
@@ -35,6 +14,7 @@
 
         <div class="govuk-grid-column-one-half">
           <div class="pa-white-container ">
+            <form class="form" method="post">
             <div class="govuk-form-group">
               <label class="govuk-label" for="pa-email">
                 Email or User ID
@@ -47,10 +27,10 @@
               </label>
               <input class="govuk-input" id="pa-password" name="pa-password" type="password" placeholder="Password">
             </div>
-          
-            <a href="./pa-dashboard" role="button" draggable="false" class="govuk-button button-primary pa-pink-button" data-module="govuk-button" style="width:100%; margin-bottom: 30px;">
+            <button class="govuk-button button-primary pa-pink-button" data-module="govuk-button" style="width:100%; margin-bottom: 30px;">
               Sign In
-            </a>
+            </button>  
+            </form>
             <p>Forgotten your <a href="./pa-confirm-mobile">Email</a>, <a href="./pa-find-practice">User ID</a> or <a href="./pa-reset-password">Password?</a></p>
           </div>
         </div>
@@ -61,9 +41,8 @@
   <div class="student-notes-box"> 
     <p>You can enter anything at the moment, we are not checking</p>
   </div>
-  
-  {% endblock %}
+  </main>
+  </div>
 
-{% block footer %}
-{% include "../../../includes/generic-footer.html"  %}
-{% endblock %}
+
+  {% include "../../../includes/pa-footer.html"  %}
